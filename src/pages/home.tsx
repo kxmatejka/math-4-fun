@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Home = () => (
   <>
     <h1>Gaming math</h1>

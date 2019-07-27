@@ -18,14 +18,14 @@ const Navigation = () => (
   <nav>
     <ul>
       <li>
-        <NavigationLink href='/' as='/'>
+        <NavigationLink href={'/'} as={'/'}>
           Home
         </NavigationLink>
       </li>
       <li>
         <div>Basics</div>
         <ul>
-          <NavigationLink href='/distance-between-points' as='/distance-between-points'>
+          <NavigationLink href={'/distance-between-points'} as={'/distance-between-points'}>
             Calculate distance between two points
           </NavigationLink>
         </ul>
