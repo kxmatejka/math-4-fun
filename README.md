@@ -1,4 +1,4 @@
-# Gaming math
+# Math for fun
 
 ## Run
 
