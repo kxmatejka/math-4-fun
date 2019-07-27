@@ -1,5 +1,5 @@
 import React, { useState, FunctionComponent } from 'react'
-import { Stage, Layer, Rect, Circle } from 'react-konva'
+import { Stage, Layer, Rect, Circle, Line } from 'react-konva'
 
 type Point = [number, number]
 
@@ -11,29 +11,18 @@ interface CalculateDistanceArguments {
 const pow2 = (number) => Math.pow(number, 2)
 
 const calculateDistance = ({ a, b }: CalculateDistanceArguments) => {
-  const [x1, x2] = [a[0], b[0]]
-  const [y1, y2] = [a[1], b[1]]
+  const [x1, y1] = a
+  const [x2, y2] = b
 
   return Math.sqrt(pow2(x2 - x1) + pow2(y2 - y1))
 }
 
-const handleDragPointStart = (event) => {
-  event.target.setAttrs({
-    scaleX: 1.5,
-    scaleY: 1.5,
-  })
-}
-
-const handleDragPointEnd = (updateState: Function) => (event) => {
+const handleDragPointMove = (updateState: Function) => (event) => {
   const {
     x, y
   } = event.target.getAttrs()
 
   updateState([x, y])
-  event.target.setAttrs({
-    scaleX: 1,
-    scaleY: 1
-  })
 }
 
 interface CirclePointProps {
@@ -45,9 +34,7 @@ interface CirclePointProps {
 const CirclePoint: FunctionComponent<CirclePointProps> = ({ point, updatePoint, color = '#000' }) => (
   <Circle
     radius={10} x={point[0]} y={point[1]} fill={color}
-    draggable
-    onDragStart={handleDragPointStart}
-    onDragEnd={handleDragPointEnd(updatePoint)}
+    draggable onDragMove={handleDragPointMove(updatePoint)}
   />
 )
 
@@ -72,6 +59,9 @@ const DistanceBetweenPoints = () => {
       <Stage width={canvasWidth} height={canvasHeight}>
         <Layer>
           <Rect width={canvasWidth} height={canvasHeight} stroke={'#000'} />
+        </Layer>
+        <Layer>
+          <Line points={[...a, ...b]} stroke={'#666'} />
         </Layer>
         <Layer>
           <CirclePoint point={a} updatePoint={setPointA} color={'#507fff'} />
