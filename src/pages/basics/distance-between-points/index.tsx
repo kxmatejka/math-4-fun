@@ -17,7 +17,7 @@ const calculateDistance = ({ a, b }: CalculateDistanceArguments) => {
   return Math.sqrt(pow2(x2 - x1) + pow2(y2 - y1))
 }
 
-const handleDragPointMove = (updateState: Function) => (event) => {
+const handleDragPoint = (updateState: Function) => (event) => {
   const {
     x, y
   } = event.target.getAttrs()
@@ -34,7 +34,7 @@ interface CirclePointProps {
 const CirclePoint: FunctionComponent<CirclePointProps> = ({ point, updatePoint, color = '#000' }) => (
   <Circle
     radius={10} x={point[0]} y={point[1]} fill={color}
-    draggable onDragMove={handleDragPointMove(updatePoint)}
+    draggable onDragMove={handleDragPoint(updatePoint)}
   />
 )
 
