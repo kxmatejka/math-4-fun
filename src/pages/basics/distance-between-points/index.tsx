@@ -53,8 +53,6 @@ const DistanceBetweenPoints = () => {
           c*c = a*a + b*b
         </p>
         <p>
-        </p>
-        <p>
           x1, y1 = { a.join(', ') }
         </p>
         <p>
