@@ -25,9 +25,20 @@ const Navigation = () => (
       <li>
         <div>Basics</div>
         <ul>
-          <NavigationLink href={'/distance-between-points'} as={'/distance-between-points'}>
-            Calculate distance between two points
-          </NavigationLink>
+          <li>
+            <NavigationLink href={'/distance-between-points'} as={'/distance-between-points'}>
+              Calculate distance between two points
+            </NavigationLink>
+          </li>
+          <li>
+            Rotate to point
+          </li>
+          <li>
+            Move to direction
+          </li>
+          <li>
+            Detect collision
+          </li>
         </ul>
       </li>
     </ul>
