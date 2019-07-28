@@ -1,7 +1,6 @@
 import React, { useState, FunctionComponent } from 'react'
 import { Stage, Layer, Rect, Circle, Line } from 'react-konva'
-
-type Point = [number, number]
+import { Point } from '../../../types'
 
 interface CalculateDistanceArguments {
   a: Point,

@@ -3,10 +3,10 @@ import Link from 'next/link'
 
 interface NavigationLinkProps {
   href: string,
-  as: string
+  as?: string
 }
 
-const NavigationLink: FunctionComponent<NavigationLinkProps> = ({ href, as, children }) => (
+const NavigationLink: FunctionComponent<NavigationLinkProps> = ({ href, as = href, children }) => (
   <Link href={href} as={as}>
     <a>
       { children }
@@ -18,7 +18,7 @@ const Navigation = () => (
   <nav>
     <ul>
       <li>
-        <NavigationLink href={'/'} as={'/'}>
+        <NavigationLink href={'/'}>
           Home
         </NavigationLink>
       </li>
@@ -26,12 +26,14 @@ const Navigation = () => (
         <div>Basics</div>
         <ul>
           <li>
-            <NavigationLink href={'/distance-between-points'} as={'/distance-between-points'}>
+            <NavigationLink href={'/distance-between-points'}>
               Calculate distance between two points
             </NavigationLink>
           </li>
           <li>
-            Rotate to point
+            <NavigationLink href={'/rotate-to-point'}>
+              Rotate to point
+            </NavigationLink>
           </li>
           <li>
             Move to direction
