@@ -47,10 +47,27 @@ const DistanceBetweenPoints = () => {
     <>
       <div>
         <p>
+          <a href={'https://en.wikipedia.org/wiki/Pythagorean_theorem'} target={'_blank'}>Pythagorean theorem</a>
+        </p>
+        <p>
+          c*c = a*a + b*b
+        </p>
+        <p>
+        </p>
+        <p>
           x1, y1 = { a.join(', ') }
         </p>
         <p>
           x2, y2 = { b.join(', ') }
+        </p>
+        <p>
+          a = x2 - x1
+        </p>
+        <p>
+          b = y2 - y1
+        </p>
+        <p>
+          c = Math.sqrt(a*a + b*b)
         </p>
         <p>
           distance: { calculateDistance({ a, b }) }
