@@ -1,6 +1,7 @@
 import React, { useState, FunctionComponent } from 'react'
-import { Stage, Layer, Rect, Circle, Line } from 'react-konva'
+import { Layer, Line, Circle } from 'react-konva'
 import { Point } from '../../../types'
+import { BaseCanvas } from '../../../components/canvas'
 
 interface CalculateDistanceArguments {
   a: Point,
@@ -38,9 +39,8 @@ const CirclePoint: FunctionComponent<CirclePointProps> = ({ point, updatePoint, 
 )
 
 const DistanceBetweenPoints = () => {
-  const [canvasWidth, canvasHeight] = [500, 300]
-  const [a, setPointA] = useState<Point>([125, 100])
-  const [b, setPointB] = useState<Point>([360, 180])
+  const [a, setPointA] = useState<Point>([160, 220])
+  const [b, setPointB] = useState<Point>([300, 280])
 
   return (
     <>
@@ -70,10 +70,7 @@ const DistanceBetweenPoints = () => {
           distance: { calculateDistance({ a, b }) }
         </p>
       </div>
-      <Stage width={canvasWidth} height={canvasHeight}>
-        <Layer>
-          <Rect width={canvasWidth} height={canvasHeight} stroke={'#000'} />
-        </Layer>
+      <BaseCanvas>
         <Layer>
           <Line points={[...a, ...b]} stroke={'#666'} />
         </Layer>
@@ -81,7 +78,7 @@ const DistanceBetweenPoints = () => {
           <CirclePoint point={a} updatePoint={setPointA} color={'#507fff'} />
           <CirclePoint point={b} updatePoint={setPointB} color={'#ff2b6a'} />
         </Layer>
-      </Stage>
+      </BaseCanvas>
     </>
   )
 }

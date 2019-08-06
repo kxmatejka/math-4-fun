@@ -36,6 +36,11 @@ const Navigation = () => (
             </NavigationLink>
           </li>
           <li>
+            <NavigationLink href={'/rotate-around-point'}>
+              Rotate around point
+            </NavigationLink>
+          </li>
+          <li>
             Move to direction
           </li>
           <li>

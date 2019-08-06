@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import {Stage, Layer, Image, Rect} from 'react-konva'
+import React, { useState, useEffect, useContext } from 'react'
+import { Layer, Image } from 'react-konva'
 import { Point } from '../../../types'
+import { BaseCanvas, BaseCanvasSizeContext } from '../../../components/canvas'
 
 const CAR_URL = '/static/images/car-2d.png'
 
@@ -47,11 +48,20 @@ const angleToPoint = ({ a, b }: AngleToPointArguments) => {
   return angle
 }
 
+const handleMouseMove = (setCursorPosition) => (event) => {
+  const stage = event.target.getStage()
+  const {
+    x, y
+  } = stage.getPointerPosition()
+  setCursorPosition([x, y])
+}
+
 const RotateToPoint = () => {
-  const [canvasWidth, canvasHeight] = [500, 500]
-  const [cursorPosition, setCursorPosition] = useState<Point>([250, 0])
+  const [canvasWidth, canvasHeight] = useContext(BaseCanvasSizeContext)
+  const [halfCanvasWidth, halfCanvasHeight] = [canvasWidth / 2, canvasHeight / 2]
+  const [cursorPosition, setCursorPosition] = useState<Point>([halfCanvasWidth, 0])
   const image = useImage(CAR_URL)
-  const angle = angleToPoint({ a: cursorPosition, b: [250, 250] })
+  const angle = angleToPoint({ a: cursorPosition, b: [halfCanvasWidth, halfCanvasHeight] })
 
   return (
     <>
@@ -61,26 +71,17 @@ const RotateToPoint = () => {
       <p>
         rotation = { Math.floor(angle) }°
       </p>
-      <Stage width={canvasWidth} height={canvasHeight} onMouseMove={(event) => {
-        const stage = event.target.getStage()
-        const {
-          x, y
-        } = stage.getPointerPosition()
-        setCursorPosition([x, y])
-      }}>
-        <Layer>
-          <Rect width={canvasWidth} height={canvasHeight} stroke={'#000'} />
-        </Layer>
+      <BaseCanvas onMouseMove={handleMouseMove(setCursorPosition)}>
         <Layer>
           <Image image={image}
-                 x={250} y={250}
+                 x={halfCanvasWidth} y={halfCanvasHeight}
                  width={128} height={128}
                  offsetX={64} offsetY={64}
                  rotation={angle}
                  stroke={'#ddd'} strokeWidth={1}
           />
         </Layer>
-      </Stage>
+      </BaseCanvas>
     </>
   )
 }
