@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 import Konva from 'konva'
-import { Layer, Circle } from 'react-konva'
-import { BaseCanvas, BaseCanvasSizeContext } from '../../../components/canvas'
+import {Layer, Circle} from 'react-konva'
+import {BaseCanvas, BaseCanvasSizeContext} from '../../../components/canvas'
 
 const updateSpeed = (setSpeed) => (event) => parseFloat(setSpeed(event.target.value))
 
@@ -32,7 +32,7 @@ const RotateAroundPoint = () => {
     <>
       <label>
         <p>Speed: {speed * 10} %</p>
-        <input type={'range'} min={0} max={10} step={0.1} value={speed} onChange={updateSpeed(setSpeed)} />
+        <input type={'range'} min={0} max={10} step={0.1} value={speed} onChange={updateSpeed(setSpeed)}/>
       </label>
       <BaseCanvas>
         <Layer>

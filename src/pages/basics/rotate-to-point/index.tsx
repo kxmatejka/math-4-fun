@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Layer, Image } from 'react-konva'
-import { Point } from '../../../types'
-import { BaseCanvas, BaseCanvasSizeContext } from '../../../components/canvas'
+import React, {useState, useEffect, useContext} from 'react'
+import {Layer, Image} from 'react-konva'
+import {Point} from '../../../types'
+import {BaseCanvas, BaseCanvasSizeContext} from '../../../components/canvas'
 
 const CAR_URL = '/static/images/car-2d.png'
 
@@ -33,7 +33,7 @@ interface AngleToPointArguments {
 
 const radianToDegree = (radian) => radian * 180 / Math.PI
 
-const angleToPoint = ({ a, b }: AngleToPointArguments) => {
+const angleToPoint = ({a, b}: AngleToPointArguments) => {
   const x = a[0] - b[0]
   const y = a[1] - b[1]
 
@@ -61,15 +61,15 @@ const RotateToPoint = () => {
   const [halfCanvasWidth, halfCanvasHeight] = [canvasWidth / 2, canvasHeight / 2]
   const [cursorPosition, setCursorPosition] = useState<Point>([halfCanvasWidth, 0])
   const image = useImage(CAR_URL)
-  const angle = angleToPoint({ a: cursorPosition, b: [halfCanvasWidth, halfCanvasHeight] })
+  const angle = angleToPoint({a: cursorPosition, b: [halfCanvasWidth, halfCanvasHeight]})
 
   return (
     <>
       <p>
-        cursor x, y = { cursorPosition.join(', ') }
+        cursor x, y = {cursorPosition.join(', ')}
       </p>
       <p>
-        rotation = { Math.floor(angle) }°
+        angle = {Math.floor(angle)}°
       </p>
       <BaseCanvas onMouseMove={handleMouseMove(setCursorPosition)}>
         <Layer>
