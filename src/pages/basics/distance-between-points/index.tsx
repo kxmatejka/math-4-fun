@@ -52,10 +52,10 @@ const DistanceBetweenPoints = () => {
           c * c = a * a + b * b
         </p>
         <p>
-          a = x1 - y1 = { a.join(' - ') }
+          a = x2 - x1 = { a[0] } - { b[0] }
         </p>
         <p>
-          b = x2 - y2 = { b.join(' - ') }
+          b = y2 - y1 = { a[1] } - { b[1] }
         </p>
         <p>
           distance = c = Math.sqrt(a * a + b * b) = { calculateDistance({ a, b }).toFixed(2) }
