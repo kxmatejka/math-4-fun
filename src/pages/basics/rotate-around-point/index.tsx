@@ -10,12 +10,11 @@ const RotateAroundPoint = () => {
   useEffect(() => {
     const animation = new Konva.Animation(() => {
       const angle = 1.5 * Math.PI / 180
+      const sin = Math.sin(angle)
+      const cos = Math.cos(angle)
 
       const x = rotatingCircle.current.x() - 100
       const y = rotatingCircle.current.y() - 100
-
-      const sin = Math.sin(angle)
-      const cos = Math.cos(angle)
 
       rotatingCircle.current.x(100 + cos * x - sin * y)
       rotatingCircle.current.y(100 + sin * x + cos * y)
