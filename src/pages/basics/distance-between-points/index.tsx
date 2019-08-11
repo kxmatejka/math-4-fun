@@ -66,6 +66,8 @@ const DistanceBetweenPoints = () => {
           <Line points={[...a, ...b]} stroke={'#666'} />
         </Layer>
         <Layer>
+          <Line points={[a[0], a[1], a[0], b[1]]} stroke={'#666'} />
+          <Line points={[b[0], b[1], a[0], b[1]]} stroke={'#666'} />
           <CirclePoint point={a} updatePoint={setPointA} color={'#507fff'} />
           <CirclePoint point={b} updatePoint={setPointB} color={'#ff2b6a'} />
         </Layer>
