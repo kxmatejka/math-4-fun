@@ -11,14 +11,14 @@ const RotateAroundPoint = () => {
     const animation = new Konva.Animation(() => {
       const angle = 1.5 * Math.PI / 180
 
-      const currentX = rotatingCircle.current.x()
-      const currentY = rotatingCircle.current.y()
+      const x = rotatingCircle.current.x() - 100
+      const y = rotatingCircle.current.y() - 100
 
-      const x = 100 + Math.cos(angle) * (currentX - 100) - Math.sin(angle) * (currentY - 100)
-      const y = 100 + Math.sin(angle) * (currentX - 100) + Math.cos(angle) * (currentY - 100)
+      const sin = Math.sin(angle)
+      const cos = Math.cos(angle)
 
-      rotatingCircle.current.x(x)
-      rotatingCircle.current.y(y)
+      rotatingCircle.current.x(100 + cos * x - sin * y)
+      rotatingCircle.current.y(100 + sin * x + cos * y)
     }, rotatingCircle.current.getLayer())
 
     animation.start()
