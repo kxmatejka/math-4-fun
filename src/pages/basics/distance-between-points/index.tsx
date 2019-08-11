@@ -39,8 +39,8 @@ const CirclePoint: FunctionComponent<CirclePointProps> = ({ point, updatePoint, 
 )
 
 const DistanceBetweenPoints = () => {
-  const [a, setPointA] = useState<Point>([160, 220])
-  const [b, setPointB] = useState<Point>([300, 280])
+  const [a, setPointA] = useState<Point>([140, 140])
+  const [b, setPointB] = useState<Point>([380, 300])
 
   return (
     <>
