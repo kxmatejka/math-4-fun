@@ -1,1 +1,9 @@
-export type Point = [number, number]
+export interface Point {
+  x: number
+  y: number
+}
+
+export interface TwoPoints {
+  a: Point,
+  b: Point
+}

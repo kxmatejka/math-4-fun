@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {Layer, Image} from 'react-konva'
-import {Point} from '../../../types'
+import {Point, TwoPoints} from '../../../types'
 import {BaseCanvas, BaseCanvasSizeContext} from '../../../components/canvas'
 
 const CAR_URL = '/static/images/car-2d.png'
@@ -26,16 +26,11 @@ const useImage = (url: string) => {
   return image
 }
 
-interface AngleToPointArguments {
-  a: Point,
-  b: Point
-}
-
 const radianToDegree = (radian) => radian * 180 / Math.PI
 
-const angleToPoint = ({a, b}: AngleToPointArguments) => {
-  const x = a[0] - b[0]
-  const y = a[1] - b[1]
+const angleToPoint = ({a, b}: TwoPoints) => {
+  const x = a.x - b.x
+  const y = a.y - b.y
 
   let angle = Math.atan2(y, x)
   angle += Math.PI / 2 // fix for pointed up image
@@ -48,25 +43,25 @@ const angleToPoint = ({a, b}: AngleToPointArguments) => {
   return angle
 }
 
-const handleMouseMove = (setCursorPosition) => (event) => {
-  const stage = event.target.getStage()
+const handleMouseMove = (setState: Function) => (event) => {
   const {
     x, y
-  } = stage.getPointerPosition()
-  setCursorPosition([x, y])
+  } = event.target.getStage().getPointerPosition()
+
+  setState({x, y})
 }
 
 const RotateToPoint = () => {
   const [canvasWidth, canvasHeight] = useContext(BaseCanvasSizeContext)
   const [halfCanvasWidth, halfCanvasHeight] = [canvasWidth / 2, canvasHeight / 2]
-  const [cursorPosition, setCursorPosition] = useState<Point>([halfCanvasWidth, 0])
+  const [cursorPosition, setCursorPosition] = useState<Point>({x: halfCanvasWidth, y: 0})
   const image = useImage(CAR_URL)
-  const angle = angleToPoint({a: cursorPosition, b: [halfCanvasWidth, halfCanvasHeight]})
+  const angle = angleToPoint({a: cursorPosition, b: {x: halfCanvasWidth, y: halfCanvasHeight}})
 
   return (
     <>
       <p>
-        cursor x, y = {cursorPosition.join(', ')}
+        cursor x, y = {cursorPosition.x} , {cursorPosition.y}
       </p>
       <p>
         angle = {Math.floor(angle)}°

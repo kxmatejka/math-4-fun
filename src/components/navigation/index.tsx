@@ -41,7 +41,9 @@ const Navigation = () => (
             </NavigationLink>
           </li>
           <li>
-            Move to direction
+            <NavigationLink href={'/move-to-direction'}>
+              Move to direction
+            </NavigationLink>
           </li>
           <li>
             Detect collision
