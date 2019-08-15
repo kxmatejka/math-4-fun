@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {Layer, Image} from 'react-konva'
-import {Point, TwoPoints} from '../../../types'
+import {Point} from '../../../types'
 import {BaseCanvas, BaseCanvasSizeContext} from '../../../components/canvas'
+import {angleToPoint} from '../../../lib'
 
 const CAR_URL = '/static/images/car-2d.png'
 
@@ -26,23 +27,6 @@ const useImage = (url: string) => {
   return image
 }
 
-const radianToDegree = (radian) => radian * 180 / Math.PI
-
-const angleToPoint = ({a, b}: TwoPoints) => {
-  const x = a.x - b.x
-  const y = a.y - b.y
-
-  let angle = Math.atan2(y, x)
-  angle += Math.PI / 2 // fix for pointed up image
-  angle = radianToDegree(angle)
-
-  if (angle < 0) { // fix of atan2 +180/-180 range
-    angle = 360 - (-angle)
-  }
-
-  return angle
-}
-
 const handleMouseMove = (setState: Function) => (event) => {
   const {
     x, y
@@ -56,7 +40,7 @@ const RotateToPoint = () => {
   const [halfCanvasWidth, halfCanvasHeight] = [canvasWidth / 2, canvasHeight / 2]
   const [cursorPosition, setCursorPosition] = useState<Point>({x: halfCanvasWidth, y: 0})
   const image = useImage(CAR_URL)
-  const angle = angleToPoint({a: cursorPosition, b: {x: halfCanvasWidth, y: halfCanvasHeight}})
+  const angle = angleToPoint(cursorPosition, {x: halfCanvasWidth, y: halfCanvasHeight})
 
   return (
     <>

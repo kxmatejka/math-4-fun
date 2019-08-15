@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, {FunctionComponent} from 'react'
 import Link from 'next/link'
 
 interface NavigationLinkProps {
@@ -6,10 +6,10 @@ interface NavigationLinkProps {
   as?: string
 }
 
-const NavigationLink: FunctionComponent<NavigationLinkProps> = ({ href, as = href, children }) => (
+const NavigationLink: FunctionComponent<NavigationLinkProps> = ({href, as = href, children}) => (
   <Link href={href} as={as}>
     <a>
-      { children }
+      {children}
     </a>
   </Link>
 )
@@ -18,7 +18,7 @@ const Navigation = () => (
   <nav>
     <ul>
       <li>
-        <NavigationLink href={'/'}>
+        <NavigationLink href='/'>
           Home
         </NavigationLink>
       </li>
@@ -26,27 +26,29 @@ const Navigation = () => (
         <div>Basics</div>
         <ul>
           <li>
-            <NavigationLink href={'/distance-between-points'}>
+            <NavigationLink href='/distance-between-points'>
               Calculate distance between two points
             </NavigationLink>
           </li>
           <li>
-            <NavigationLink href={'/rotate-to-point'}>
+            <NavigationLink href='/rotate-to-point'>
               Rotate to point
             </NavigationLink>
           </li>
           <li>
-            <NavigationLink href={'/rotate-around-point'}>
+            <NavigationLink href='/rotate-around-point'>
               Rotate around point
             </NavigationLink>
           </li>
           <li>
-            <NavigationLink href={'/move-to-direction'}>
+            <NavigationLink href='/move-to-direction'>
               Move to direction
             </NavigationLink>
           </li>
           <li>
-            Detect collision
+            <NavigationLink href='/look-to-direction'>
+              Look to direction
+            </NavigationLink>
           </li>
         </ul>
       </li>

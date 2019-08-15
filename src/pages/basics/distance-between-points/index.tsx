@@ -1,10 +1,10 @@
 import React, {useState, FunctionComponent} from 'react'
 import {Layer, Line, Circle} from 'react-konva'
-import {Point, TwoPoints} from '../../../types'
+import {Point} from '../../../types'
 import {BaseCanvas} from '../../../components/canvas'
 import {pow2} from '../../../lib'
 
-const distance = ({a, b}: TwoPoints) => Math.sqrt(pow2(b.x - a.x) + pow2(b.y - a.y))
+const distance = (a: Point, b: Point) => Math.sqrt(pow2(b.x - a.x) + pow2(b.y - a.y))
 
 const handleDragPoint = (setState: Function) => (event) => {
   const {
@@ -41,13 +41,13 @@ const DistanceBetweenPoints = () => {
           c * c = a * a + b * b
         </p>
         <p>
-          a = x2 - x1 = {a.x} - {b.x}
+          a = x2 - x1 = {b.x} - {a.x}
         </p>
         <p>
-          b = y2 - y1 = {a.y} - {b.y}
+          b = y2 - y1 = {b.y} - {a.y}
         </p>
         <p>
-          distance = c = Math.sqrt(a * a + b * b) = {distance({a, b}).toFixed(2)}
+          distance = c = Math.sqrt(a * a + b * b) = {distance(a, b).toFixed(2)}
         </p>
       </div>
       <p>

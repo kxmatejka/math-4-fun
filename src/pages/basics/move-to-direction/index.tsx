@@ -1,9 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react'
-import Konva from 'konva'
+import React, {useRef, useState} from 'react'
 import {Layer, Circle} from 'react-konva'
 import {BaseCanvas} from '../../../components/canvas'
 import {Point} from '../../../types'
-import {pow2} from '../../../lib'
+import {useMoveToDirection} from '../../../effects'
 
 const handleCanvasClick = (setState: Function) => (event) => {
   const {
@@ -18,27 +17,7 @@ const MoveToDirection = () => {
   const [target, setTarget] = useState<Point>({x: 250, y: 250})
   const circle = useRef(null)
 
-  useEffect(() => {
-    const animation = new Konva.Animation(() => {
-      const x = circle.current.x()
-      const y = circle.current.y()
-
-      const a = target.x - x
-      const b = target.y - y
-      const c = Math.sqrt(pow2(a) + pow2(b))
-
-      const velocityX = a / c
-      const velocityY = b / c
-
-      circle.current.x(x + velocityX)
-      circle.current.y(y + velocityY)
-
-    }, circle.current.getLayer())
-
-    animation.start()
-
-    return () => animation.stop()
-  }, [target])
+  useMoveToDirection()(target, circle)
 
   return (
     <>
