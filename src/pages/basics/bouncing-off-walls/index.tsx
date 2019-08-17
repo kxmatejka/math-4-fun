@@ -13,11 +13,11 @@ export const BouncingOffWalls = () => {
       const x = ball.current.x()
       const y = ball.current.y()
 
-      if (x > 500 || x < 0) {
+      if (x > 490 || x < 10) {
         velocityX *= -1
       }
 
-      if (y > 500 || y < 0) {
+      if (y > 490 || y < 10) {
         velocityY *= -1
       }
 
