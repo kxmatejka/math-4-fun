@@ -22,7 +22,7 @@ const rotateToCenter = (movingRef) => {
 }
 
 export const LookToDirection = () => {
-  const [target, setTarget] = useState<Point>({x: 380, y: 100})
+  const [target, setTarget] = useState<Point>({x: 330, y: 240})
   const ship = useRef(null)
 
   useMoveToDirection(rotateToCenter)(target, ship)
@@ -36,7 +36,7 @@ export const LookToDirection = () => {
         <Layer>
           <Circle radius={5} x={target.x} y={target.y} fill='#ff3400' />
           <Circle radius={10} x={250} y={250} fill='#000' />
-          <Line x={50} y={50} fill='#a920ff' closed={true}
+          <Line x={150} y={200} fill='#a920ff' closed={true}
             scaleX={0.3} scaleY={0.3}
             points={[50,0, 90,100, 50,75, 10,100, 50,0]}
             ref={ship}

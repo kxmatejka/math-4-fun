@@ -2,9 +2,7 @@ import React, {useState, FunctionComponent} from 'react'
 import {Layer, Line, Circle} from 'react-konva'
 import {Point} from '../../../types'
 import {BaseCanvas} from '../../../components/canvas'
-import {pow2} from '../../../lib'
-
-const distance = (a: Point, b: Point) => Math.sqrt(pow2(b.x - a.x) + pow2(b.y - a.y))
+import {distance} from '../../../lib'
 
 const handleDragPoint = (setState: Function) => (event) => {
   const {

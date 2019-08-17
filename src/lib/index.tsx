@@ -2,6 +2,8 @@ import {Point} from '../types'
 
 export const pow2 = (number) => Math.pow(number, 2)
 
+export const distance = (a: Point, b: Point) => Math.sqrt(pow2(b.x - a.x) + pow2(b.y - a.y))
+
 export const radianToDegree = (radian) => radian * 180 / Math.PI
 
 export const angleToPoint = (a: Point, b: Point) => {
