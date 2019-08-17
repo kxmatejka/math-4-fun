@@ -1,3 +1,3 @@
-import { MoveToDirection } from '../src/pages'
+import {MoveToDirection} from '../src/pages'
 
 export default MoveToDirection

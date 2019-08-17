@@ -1,3 +1,3 @@
-import { DistanceBetweenPoints } from '../src/pages'
+import {DistanceBetweenPoints} from '../src/pages'
 
 export default DistanceBetweenPoints

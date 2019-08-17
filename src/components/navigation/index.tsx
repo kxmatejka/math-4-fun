@@ -50,7 +50,15 @@ const Navigation = () => (
               Look to direction
             </NavigationLink>
           </li>
+          <li>
+            <NavigationLink href='/bouncing-off-walls'>
+              Bouncing off the walls
+            </NavigationLink>
+          </li>
         </ul>
+      </li>
+      <li>
+        <div>Demos</div>
       </li>
     </ul>
   </nav>

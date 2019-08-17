@@ -1,8 +1,8 @@
-import App, { Container } from 'next/app'
-import { Layout } from '../src/components/layout'
+import App, {Container} from 'next/app'
+import {Layout} from '../src/components/layout'
 
 export default class extends App {
-  render () {
+  render() {
     const {
       Component,
       pageProps

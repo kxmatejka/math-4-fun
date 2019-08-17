@@ -1,3 +1,3 @@
-import { RotateToPoint } from '../src/pages'
+import {RotateToPoint} from '../src/pages'
 
 export default RotateToPoint
